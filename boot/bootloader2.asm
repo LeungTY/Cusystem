@@ -145,17 +145,17 @@ printint:
 	mov ax, bx
 	mov bx, 100
 	div bx		;divide dx:ax by bx, store in ax, remainder in dx
-	mov [NUM_BUFFER], al
-	add [NUM_BUFFER], byte '0'
+	mov [buff], al
+	add [buff], byte '0'
 	mov ax, dx
 	xor dx, dx
 	mov bx, 10
 	div bx
-	mov [NUM_BUFFER+1], al
-	add [NUM_BUFFER+1], byte '0'
-	mov [NUM_BUFFER+2], dx
-	add [NUM_BUFFER+2], byte '0'
-	mov bx, NUM_BUFFER
+	mov [buff+1], al
+	add [buff+1], byte '0'
+	mov [buff+2], dx
+	add [buff+2], byte '0'
+	mov bx, buff
 	call print
 	pop ax
 	pop bx
@@ -165,7 +165,7 @@ memerror db 'mem error', 0
 haltmsg db 'Got error , Halt.' , 0	
 drive db 0
 sector equ 55
-NUM_BUFFER		db '000', 0
+buff		db '000', 0
 MSG_KB db ' is availble', 0
 
 diskerrormsg db 'Error: Disk error', 0
